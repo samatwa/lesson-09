@@ -2,15 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-app
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/samatwa/lesson-09.git"
     targetRevision: HEAD
-    path: lesson_09
+    path: manifests
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: test
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
